@@ -13,6 +13,7 @@ $silver_pink: #c9ada7;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "Prompt", sans-serif;
 }
 .title {
   color: transparent;
@@ -53,11 +54,18 @@ $silver_pink: #c9ada7;
   outline: none;
 }
 .joke_container {
-  width: 55rem;
+  min-width: 61.375rem;
+  width: 61.375rem;
+  max-width: 100vw;
   align-self: center;
   height: 32rem;
   display: flex;
   flex-direction: row;
+  img {
+    position: relative;
+    min-width: 20.9rem;
+    width: 20.9rem;
+  }
 }
 .buttons_section {
   display: flex;
@@ -72,6 +80,7 @@ $silver_pink: #c9ada7;
   border-radius: 10px;
   padding: 10px;
   border: none;
+  cursor: pointer;
 }
 .dialog_content {
   display: flex;
@@ -95,6 +104,15 @@ $silver_pink: #c9ada7;
 .listitem {
   display: flex;
   flex-direction: row;
+}
+.bubble {
+  display: inline-block;
+  position: relative;
+  max-width: 20rem;
+  padding: 1.25rem;
+  border-radius: 10px;
+  background-color: $silver_pink;
+  word-break: keep-all;
 }
 
 @keyframes expand {

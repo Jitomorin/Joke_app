@@ -14,6 +14,7 @@ import {
   Switch,
   Button,
   useMediaQuery,
+  CircularProgress,
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { CheckBox } from "@mui/icons-material";
@@ -78,8 +79,8 @@ const SideDrawer = ({ dialogClose, dialogOpen, open }) => {
 
 const App = () => {
   const [open, setOpen] = useState(false);
-  const [delivery, setDelivery] = useState();
-  const [joke, setJoke] = useState();
+  const [isLoading, setIsLoading] = useState(false);
+  const [joke, setJoke] = useState({});
   const [setup, setSetup] = useState();
 
   const dialogOpen = () => {
@@ -92,9 +93,11 @@ const App = () => {
     const parameters = {
       amount: 6,
     };
+    setIsLoading(true);
     const data = await getJokes(parameters);
     //check if joke is single or two part
-    setJoke(data.delivery);
+    setJoke(data);
+    setIsLoading(false);
   };
   return (
     <div className="App">
@@ -106,7 +109,36 @@ const App = () => {
       <h1 className="title">Wanna Hear a Joke?</h1>
       <div className="joke_container">
         <img src={illustration} alt="illustration" />
-        <p className="bubble">{}</p>
+        {isLoading ? (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              width: "100%",
+              alignItems: "center",
+            }}
+          >
+            <CircularProgress size={150} sx={{ color: "#c9ada7", margin: 0 }} />
+          </div>
+        ) : (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-around",
+              margin: "3rem",
+            }}
+          >
+            {joke.type === "single" ? (
+              <div className="bubble">{joke.joke}</div>
+            ) : (
+              <>
+                <div className="bubble">{joke.setup}</div>
+                <div className="bubble">{joke.delivery}</div>
+              </>
+            )}
+          </div>
+        )}
       </div>
       <div>
         <input placeholder="Search any keyword" className="search_bar" />
