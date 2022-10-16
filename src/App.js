@@ -20,6 +20,10 @@ import { useTheme } from "@mui/material/styles";
 import { CheckBox } from "@mui/icons-material";
 import { Box } from "@mui/system";
 
+//HELP
+//will struggle with the filtering functionality
+//but i can handle it 
+
 const SideDrawer = ({ dialogClose, dialogOpen, open }) => {
   // const fullscreen = useMediaQuery(theme.breakpoints.down("md"));
   const categories = [
