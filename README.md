@@ -1,4 +1,4 @@
-[Live Preview](loquacious-baklava-0913db.netlify.app)
+[Live Preview](https://loquacious-baklava-0913db.netlify.app/)
 
 # Getting Started with Create React App
 
