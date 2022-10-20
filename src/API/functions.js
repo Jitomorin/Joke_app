@@ -1,11 +1,16 @@
+import axios from "axios";
+
 const getJokes = async(parameters) => {
-    const response = await fetch('https://v2.jokeapi.dev/joke/Any', {
+    const response = await axios('https://v2.jokeapi.dev/joke/Any', {
         
-        params: parameters
+        params: {
+            amount: parameters.amount,
+        }
     });
-    const data = await response.json();
+
+    const data=response.data
     console.log(data)
-    return data
+    return data.jokes
 }
 
 export {getJokes}
